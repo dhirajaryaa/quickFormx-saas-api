@@ -5,13 +5,12 @@ import path from "path";
 configDotenv({
     path: path.resolve(__dirname, "../.env")
 });
+const config = Object.freeze({
+    PORT: process.env.PORT,
+    DB_URI: process.env.DB_URI
+});
 
-const {
+export const {
     PORT,
     DB_URI
-} = process.env;
-
-// env freeze
-const config = Object.freeze({ PORT, DB_URI })
-
-export { config };
+} = config;
