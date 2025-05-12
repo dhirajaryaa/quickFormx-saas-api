@@ -1,0 +1,23 @@
+{
+    "name": "quickformx-api",
+    "version": "1.0.0",
+    "description": "This is the backend service for **QuickFormx**, a simple SaaS product for building and managing forms. Built with **Node.js** and **Express**, this server handles APIs for creating forms, storing submissions, and managing users.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dhirajaryaa/quickFormx-saas-api.git"
+    },
+    "keywords": [],
+    "author": "Dhiraj Arya [dhirajarya.ptn@gmail.com]",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dhirajaryaa/quickFormx-saas-api/issues"
+    },
+    "homepage": "https://github.com/dhirajaryaa/quickFormx-saas-api#readme"
+}
