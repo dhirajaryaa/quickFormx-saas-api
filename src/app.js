@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import { ORIGIN } from "./config/env.js";
 import rateLimit from "express-rate-limit";
+import ErrorMiddleware from "./middlewares/error.middleware.js";
 
 // initialize express app
 const app = express();
@@ -34,4 +35,6 @@ app.get('/', (req, res) => {
     res.send('<h4>Welcome to AI Form Builder API gateway. <a href="https://github.com/dhirajaryaa/quickFormx-saas-api" >View Docs</h1>')
 });
 
+// error middleware setup
+app.use(ErrorMiddleware);
 export default app;
