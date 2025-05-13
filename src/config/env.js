@@ -6,10 +6,12 @@ configDotenv({
 });
 const config = Object.freeze({
     PORT: process.env.PORT,
-    DB_URI: process.env.DB_URI
+    DB_URI: process.env.DB_URI,
+    ORIGIN: process.env.ORIGIN
 });
 
 export const {
     PORT,
-    DB_URI
+    DB_URI,
+    ORIGIN
 } = config;
