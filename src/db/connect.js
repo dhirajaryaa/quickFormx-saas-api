@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 import { DB_URI } from "../config/env.js"
 
-connectDB = async () => {
+console.log(DB_URI);
+
+
+async function connectDB() {
     try {
         const connectionInstant = await mongoose.connect(`${DB_URI}/quickformx`);
         console.log("Database connected ", connectionInstant.connection.host);

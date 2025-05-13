@@ -1,9 +1,8 @@
 import { configDotenv } from "dotenv";
-import path from "path";
 
 // configure dotenv
 configDotenv({
-    path: path.resolve(__dirname, "../.env")
+    path: "./.env"
 });
 const config = Object.freeze({
     PORT: process.env.PORT,
