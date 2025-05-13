@@ -28,12 +28,15 @@ const limiter = rateLimit({
     message: "Too many requests from this IP, please try again in a minute"
 });
 
-// api routes
+//! api routes
 app.use('/api', limiter); //? rate limiter middlewares
-// default routes welcome page
+//* default routes welcome page
 app.get('/', (req, res) => {
     res.send('<h4>Welcome to AI Form Builder API gateway. <a href="https://github.com/dhirajaryaa/quickFormx-saas-api" >View Docs</h1>')
 });
+//* auth routes
+import authRouter from "./routers/auth.routes.js";
+app.use("/api/v1/users",authRouter)
 
 // error middleware setup
 app.use(ErrorMiddleware);
