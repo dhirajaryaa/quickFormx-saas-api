@@ -1,9 +1,17 @@
 import app from "./src/app.js";
+import connectDB from "./src/db/connect.js"
+import { PORT } from "./src/config/env.js";
 
-const port = 3000;
+const port = PORT || 3000;
 
-// listen in port
-app.listen(port, () => {
-    console.log(`server listen on port: ${port}`);
-
-})
+// database connection
+connectDB()
+    .then(() => {
+        // listen in port
+        app.listen(port, () => {
+            console.log(`server listen on port: ${port}`);
+        });
+    })
+    .catch((err) => {
+        console.log("Database connection error", err);
+    });
