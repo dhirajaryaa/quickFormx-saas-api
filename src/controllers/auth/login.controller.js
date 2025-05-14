@@ -6,7 +6,7 @@ import loginSchema from "../../validators/auth/login.js"
 import ValidationError from "../../utils/validationError.js";
 import { cookiesOptions } from "../../config/env.js";
 
-const generateAccessAndRefreshToken = async (user) => {
+export const generateAccessAndRefreshToken = async (user) => {
     if (!user) null;
     const accessToken = await user.generateAccessToken();
     const refreshToken = await user.generateRefreshToken();
