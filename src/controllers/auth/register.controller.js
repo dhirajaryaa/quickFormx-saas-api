@@ -19,7 +19,7 @@ const userRegister = AsyncHandler(async (req, res) => {
         $or: [{ email }, { username }]
     });
     if (userExits) {
-        throw new ApiError(404, "user already exists")
+        throw new ApiError(400, "user already exists")
     };
     const newUser = await userModel.create({
         name,
