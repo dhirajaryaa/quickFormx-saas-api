@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from "cookie-parser";
 import { ORIGIN } from "./config/env.js";
 import rateLimit from "express-rate-limit";
+import passport from './config/passport.js'
 import ErrorMiddleware from "./middlewares/error.middleware.js";
 
 // initialize express app
@@ -18,10 +19,11 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.static("./public"));
-
+// passport initialized
+app.use(passport.initialize());
 // rate limiter
 const limiter = rateLimit({
-    max: 3,
+    max: 50,
     windowMs: 60 * 1000,
     standardHeaders: true,
     legacyHeaders: false,
