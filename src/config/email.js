@@ -11,3 +11,4 @@ const emailTransport = nodemailer.createTransport({
     pass:Gmail_User_Password
   }
 });
+export default emailTransport
