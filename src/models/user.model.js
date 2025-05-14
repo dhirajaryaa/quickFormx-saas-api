@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import bcrypt from "bcrypt";
 // social link schema
 const linkSchema = new mongoose.Schema(
     {
@@ -68,7 +69,7 @@ const userSchema = new mongoose.Schema(
 // password hash middleware
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next()
-    this.password = await bcrypt.hash(this.password, 12)
+    this.password = await bcrypt.hash(this.password, 12,)
     next()
 })
 // password match middleware
