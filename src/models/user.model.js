@@ -39,8 +39,7 @@ const userSchema = new mongoose.Schema(
             unique: true
         },
         password: {
-            type: String,
-            required: [true, 'Password is Required']
+            type: String
         },
         forms: [
             {
@@ -57,6 +56,7 @@ const userSchema = new mongoose.Schema(
         links: [linkSchema],
         tagline: String,
         refreshToken: String,
+  googleId: String,
         avatar: {
             url: {
                 type: String,
