@@ -2,8 +2,7 @@ import AsyncHandler from "../../utils/asyncHandler.js";
 import ApiError from "../../utils/apiError.js";
 import ApiResponse from "../../utils/apiResponse.js";
 import userModel from "../../models/user.model.js"
-import { generateAccessAndRefreshToken } from "./login.controller.js"
-import { cookiesOptions } from "../../config/env.js";
+
 
 const loginWithGoogle = AsyncHandler(async (req, res) => {
     if (!req.user) {
@@ -30,14 +29,11 @@ const loginWithGoogle = AsyncHandler(async (req, res) => {
             username: generateUsername
         });
     };
-    // generate access and refresh token
-    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user);
+
     // remove sensitive data
-    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -googleId")
+    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -googleId -isVerified")
     return res
         .status(200)
-        .cookie("accessToken", accessToken, cookiesOptions)
-        .cookie("refreshToken", refreshToken, cookiesOptions)
-        .json(new ApiResponse(200, "User login successful with google", { user: loginUser, accessToken, refreshToken }));
+        .json(new ApiResponse(200, "User login successful with google", loginUser));
 })
 export default loginWithGoogle

@@ -4,7 +4,6 @@ import ApiResponse from "../../utils/apiResponse.js";
 import userModel from "../../models/user.model.js"
 import loginSchema from "../../validators/auth/login.js"
 import ValidationError from "../../utils/validationError.js";
-import { cookiesOptions } from "../../config/env.js";
 
 export const generateAccessAndRefreshToken = async (user) => {
     if (!user) null;
@@ -39,14 +38,11 @@ const userLogin = AsyncHandler(async (req, res) => {
     if (!isPasswordCorrect) {
         throw new ApiError(400, "password invalid or incorrect")
     };
-    // generate access and refresh token
-    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user);
+
     // remove sensitive data
-    const loginUser = await userModel.findById(user._id).select("-password -refreshToken")
+    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -isVerified -googleId")
     return res
         .status(200)
-        .cookie("accessToken",accessToken,cookiesOptions)
-        .cookie("refreshToken",refreshToken,cookiesOptions)
-        .json(new ApiResponse(200, "User login successful!", {user:loginUser,accessToken,refreshToken}));
+        .json(new ApiResponse(200, "User login successful!", loginUser));
 })
 export default userLogin;

@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema(
                 ref: 'Form'
             }
         ],
-        isPublic: {
+        isVerified: {
             type: Boolean,
             default: false
         },
