@@ -18,8 +18,10 @@ const userRegister = AsyncHandler(async (req, res) => {
     const userExits = await userModel.findOne({
         $or: [{ email }, { username }]
     });
+    if (userExits?.username === username) {
+        throw new ApiError(400, "username already taken")
+    }
     if (userExits) {
-        throw new ApiError(400, "user already exists")
     };
     const newUser = await userModel.create({
         name,

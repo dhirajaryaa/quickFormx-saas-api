@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 });
 //* auth routes
 import authRouter from "./routers/auth.routes.js";
-app.use("/api/v1/users",authRouter)
+app.use("/api/v1/auth", authRouter)
 
 // error middleware setup
 app.use(ErrorMiddleware);
