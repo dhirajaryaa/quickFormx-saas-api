@@ -12,6 +12,8 @@ const config = Object.freeze({
     Access_Token_Expired: process.env.Access_Token_Expired,
     Refresh_Token_Secret: process.env.Refresh_Token_Secret,
     Refresh_Token_Expired: process.env.Refresh_Token_Expired,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
 });
 
 export const cookiesOptions = {
@@ -27,5 +29,7 @@ export const {
     Access_Token_Secret,
     Access_Token_Expired,
     Refresh_Token_Secret,
-    Refresh_Token_Expired
+    Refresh_Token_Expired,
+    GOOGLE_CLIENT_SECRET,
+    GOOGLE_CLIENT_ID
 } = config;
