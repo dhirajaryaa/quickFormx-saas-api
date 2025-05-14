@@ -14,6 +14,12 @@ const config = Object.freeze({
     Refresh_Token_Expired: process.env.Refresh_Token_Expired,
 });
 
+export const cookiesOptions = {
+    http: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None"
+}
+
 export const {
     PORT,
     DB_URI,

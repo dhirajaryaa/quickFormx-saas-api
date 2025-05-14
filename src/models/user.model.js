@@ -56,6 +56,7 @@ const userSchema = new mongoose.Schema(
         address: String,
         links: [linkSchema],
         tagline: String,
+        refreshToken: String,
         avatar: {
             url: {
                 type: String,
