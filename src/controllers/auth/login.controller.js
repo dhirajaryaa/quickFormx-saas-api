@@ -25,7 +25,6 @@ const userLogin = AsyncHandler(async (req, res) => {
     if (!validate.success) {
         const errorMessage = ValidationError(validate.error);
         throw new ApiError(400, errorMessage)
-
     };
     // check user exist or not
     const user = await userModel.findOne({

@@ -1,9 +1,10 @@
 import { Router } from "express";
+import passport from "passport";
 import userRegister from "../controllers/auth/register.controller.js";
 import userLogin from "../controllers/auth/login.controller.js";
 import loginWithGoogle from "../controllers/auth/googleAuth.controller.js";
-import passport from "passport";
-import verifyAccount from "../controllers/auth/verifyAccount.js";
+import verifyAccount from "../controllers/auth/verifyAccount.controller.js";
+import refreshAccessToken from "../controllers/auth/refreshToken.controller.js";
 
 const authRouter = Router();
 
@@ -17,5 +18,7 @@ authRouter.get("/google", passport.authenticate('google', { scope: ["profile", '
 authRouter.get("/google/callback", passport.authenticate('google', { failureRedirect: "/login", session: false }), loginWithGoogle);
 // verify user account
 authRouter.get("/verify-account", verifyAccount);
+// access token refresh
+authRouter.get("/refresh", refreshAccessToken);
 
 export default authRouter;
