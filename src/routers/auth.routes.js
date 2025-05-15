@@ -5,6 +5,7 @@ import userLogin from "../controllers/auth/login.controller.js";
 import loginWithGoogle from "../controllers/auth/googleAuth.controller.js";
 import verifyAccount from "../controllers/auth/verifyAccount.controller.js";
 import refreshAccessToken from "../controllers/auth/refreshToken.controller.js";
+import authorizedRoutes from "../middlewares/auth.middleware.js";
 
 const authRouter = Router();
 
@@ -19,6 +20,6 @@ authRouter.get("/google/callback", passport.authenticate('google', { failureRedi
 // verify user account
 authRouter.get("/verify-account", verifyAccount);
 // access token refresh
-authRouter.get("/refresh", refreshAccessToken);
+authRouter.get("/refresh", authorizedRoutes,refreshAccessToken);
 
 export default authRouter;

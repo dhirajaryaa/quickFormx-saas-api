@@ -6,7 +6,7 @@ import { cookiesOptions } from "../../config/env.js"
 import { generateAccessAndRefreshToken } from './login.controller.js'
 
 const refreshAccessToken = AsyncHandler(async (req, res) => {
-    if (req.user) {
+    if (!req.user) {
         throw new ApiError(400, 'unauthorized or invalid action');
     }
     const user = await userModel.findById(req?.user._id);
