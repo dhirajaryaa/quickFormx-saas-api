@@ -23,9 +23,7 @@ async function sendEmail({ to, subject, username, link }) {
     };
 
     try {
-        const info = await emailTransport.sendMail(mailOptions);
-        const testMailUrl = nodemailer.getTestMessageUrl(info);
-        console.log("Preview URL:", testMailUrl);
+        await emailTransport.sendMail(mailOptions);
     } catch (err) {
         console.error("Failed to send email:", err);
     }

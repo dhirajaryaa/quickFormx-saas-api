@@ -51,12 +51,16 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
+        verificationToken: {
+            type: String,
+            default: ""
+        },
         age: Number,
         address: String,
         links: [linkSchema],
         tagline: String,
         refreshToken: String,
-  googleId: String,
+        googleId: String,
         avatar: {
             url: {
                 type: String,

@@ -37,11 +37,13 @@ const userRegister = AsyncHandler(async (req, res) => {
         verificationToken: token
     });
     // send verification email
-    await sendEmail({
-        to: newUser.name,
+    sendEmail({
+        to: newUser.email,
         subject: "Verification Email from QucikFormx",
-        username: newUser.name, link: `${URL}/verify-account?token=${token}`
+        username: newUser.name,
+        link: `${URL}/verify-account?token=${token}`
     });
+    // remove sensitive data
     const userDetails = await userModel.findById(newUser._id).select("-password -refreshToken -isVerified -googleId -verificationToken")
 
     return res
