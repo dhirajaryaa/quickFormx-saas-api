@@ -12,8 +12,6 @@ const createNewForm = AsyncHandler(async (req, res) => {
     }
     // input validate
     const validate = createFormSchema.safeParse(req.body);
-    console.log(validate.error);
-    
     if (!validate.success) {
         const errorMessage = ValidationError(validate.error);
         throw new ApiError(400, errorMessage)
