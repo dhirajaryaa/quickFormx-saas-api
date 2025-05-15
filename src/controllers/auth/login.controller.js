@@ -4,6 +4,7 @@ import ApiResponse from "../../utils/apiResponse.js";
 import userModel from "../../models/user.model.js"
 import loginSchema from "../../validators/auth/login.js"
 import ValidationError from "../../utils/validationError.js";
+import { cookiesOptions } from "../../config/env.js"
 
 export const generateAccessAndRefreshToken = async (user) => {
     if (!user) null;
@@ -28,7 +29,8 @@ const userLogin = AsyncHandler(async (req, res) => {
     };
     // check user exist or not
     const user = await userModel.findOne({
-        $or: [{ email: identifier }, { username: identifier }]
+        $or: [{ email: identifier }, { username: identifier }],
+        isVerified: true
     });
     if (!user) {
         throw new ApiError(400, "user not found!")
@@ -38,11 +40,14 @@ const userLogin = AsyncHandler(async (req, res) => {
     if (!isPasswordCorrect) {
         throw new ApiError(400, "password invalid or incorrect")
     };
-
+    // generate token
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user);
     // remove sensitive data
     const loginUser = await userModel.findById(user._id).select("-password -refreshToken -isVerified -googleId")
     return res
         .status(200)
-        .json(new ApiResponse(200, "User login successful!", loginUser));
+        .cookie("accessToken", accessToken, cookiesOptions)
+        .cookie("refreshToken", refreshToken, cookiesOptions)
+        .json(new ApiResponse(200, "User login successful!", { user: loginUser, accessToken, refreshToken }));
 })
 export default userLogin;
