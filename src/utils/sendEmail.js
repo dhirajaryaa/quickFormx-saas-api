@@ -1,29 +1,34 @@
-import { Gmail_UserId } from "../config/env.js"
-import emailTransport from "../config/email.js"
+import nodemailer from 'nodemailer';
+import emailTransport from "../config/email.js";
 import EmailTemplate from "../../email/verificationEmailTemplate.js";
+import { Logo_Url, Gmail_UserId } from '../config/env.js';
 
-function sendEmail(from = "Gmail_UserId", to, subject, username, link, code) {
-    // Configure the mail options object
+const testAccount = await nodemailer.createTestAccount();
+
+async function sendEmail({ to, subject, username, link }) {
+    if (!to) {
+        console.error("Recipient email (to) is missing.");
+        return;
+    }
+
     const mailOptions = {
-        from: Gmail_UserId,
+        from: `Quick FormX <${Gmail_UserId}>`,
         to,
         subject,
-        html: EmailTemplate(
-            logo_url = "https://mailtrap.io/wp-content/uploads/2025/04/mailtrap-new-dark-2.svg",
+        html: EmailTemplate({
+            logo_url: Logo_Url,
             username,
-            verification_lin = link,
-            support_email = 'support@draj22779@gmail.com'
-        )
+            verification_link: link
+        })
     };
 
-    //send the email
-    emailTransport.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log("Email send Error", error);
-        } else {
-            console.log('Email sent: ', info.response);
-        }
-        return { error, info };
-    })
+    try {
+        const info = await emailTransport.sendMail(mailOptions);
+        const testMailUrl = nodemailer.getTestMessageUrl(info);
+        console.log("Preview URL:", testMailUrl);
+    } catch (err) {
+        console.error("Failed to send email:", err);
+    }
 }
-export default sendEmail
+
+export default sendEmail;

@@ -17,6 +17,8 @@ const config = Object.freeze({
     Gmail_UserId: process.env.Gmail_UserId,
     Gmail_User_Password: process.env.Gmail_User_Password,
     NODE_ENV: process.env.NODE_ENV,
+    URL: process.env.URL,
+    Logo_Url: process.env.Logo_Url
 });
 
 export const cookiesOptions = {
@@ -37,5 +39,7 @@ export const {
     GOOGLE_CLIENT_ID,
     Gmail_UserId,
     Gmail_User_Password,
-    NODE_ENV
+    NODE_ENV,
+    URL,
+    Logo_Url
 } = config;

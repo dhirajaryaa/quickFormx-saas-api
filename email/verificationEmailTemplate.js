@@ -1,4 +1,4 @@
-function EmailTemplate(logo_url,username,verification_link,support_email) {
+function EmailTemplate({logo_url,username,verification_link,support_email}) {
     return `
 <!DOCTYPE html>
 <html>
@@ -15,17 +15,12 @@ function EmailTemplate(logo_url,username,verification_link,support_email) {
               <td align="center" style="padding-bottom: 20px;">
                 <img src=${logo_url} alt="QuickFormX" width="40" />
                 <h2 style="margin: 16px 0 8px; font-size: 24px; color: #111;">Verify your email</h2>
-                <p style="color: #555; font-size: 16px;">Hi ${username}, use the button below to verify your email address and get started with QuickFormX.</p>
+                <p style="color: #555; font-size: 16px;">Hi ${username}, use the button below to verify your account and get started with QuickFormX.</p>
               </td>
             </tr>
             <tr>
               <td align="center" style="padding: 20px 0;">
                 <a href=${verification_link} style="background-color: #0066ff; color: #fff; padding: 12px 24px; text-decoration: none; font-size: 16px; border-radius: 6px;">Verify Email</a>
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding-top: 20px;">
-                <p style="font-size: 14px; color: #888;">Need help? Contact us at <a href=${support_email} style="color: #0066ff;">${support_email}</a></p>
               </td>
             </tr>
           </table>
