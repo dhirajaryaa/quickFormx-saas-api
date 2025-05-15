@@ -22,10 +22,11 @@ const userRegister = AsyncHandler(async (req, res) => {
         $or: [{ email }, { username }]
     });
     if (userExits?.username === username) {
-        throw new ApiError(400, "username already taken")
+        throw new ApiError(409, "Username already taken");
     }
     if (userExits) {
-    };
+        throw new ApiError(409, "Email already registered");
+    }
     // generate email token
     const token = crypto.randomBytes(32).toString('hex');
     //  create user

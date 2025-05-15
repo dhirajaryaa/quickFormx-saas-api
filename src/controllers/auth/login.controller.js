@@ -43,7 +43,7 @@ const userLogin = AsyncHandler(async (req, res) => {
     // generate token
     const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user);
     // remove sensitive data
-    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -isVerified -googleId")
+    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -isVerified -googleId -verificationToken")
     return res
         .status(200)
         .cookie("accessToken", accessToken, cookiesOptions)
