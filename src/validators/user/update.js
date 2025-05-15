@@ -8,7 +8,7 @@ const linkSchema = z.object({
 
 const updateSchema = z.object({
     name: z.string().optional(),
-    username: usernameSchema().optional(),
+    username: usernameSchema.optional(),
     age: z.number(),
     address: z.string().optional(),
     tagline: z.string().optional(),
