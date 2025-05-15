@@ -39,6 +39,9 @@ app.get('/', (req, res) => {
 //* auth routes
 import authRouter from "./routers/auth.routes.js";
 app.use("/api/v1/auth", authRouter)
+//* user routes
+import userRouter from "./routers/user.routes.js";
+app.use("/api/v1/users", userRouter)
 
 // error middleware setup
 app.use(ErrorMiddleware);
