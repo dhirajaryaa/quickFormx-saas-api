@@ -13,7 +13,12 @@ const config = Object.freeze({
     Refresh_Token_Secret: process.env.Refresh_Token_Secret,
     Refresh_Token_Expired: process.env.Refresh_Token_Expired,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    Gmail_UserId: process.env.Gmail_UserId,
+    Gmail_User_Password: process.env.Gmail_User_Password,
+    NODE_ENV: process.env.NODE_ENV,
+    URL: process.env.URL,
+    Logo_Url: process.env.Logo_Url
 });
 
 export const cookiesOptions = {
@@ -31,5 +36,10 @@ export const {
     Refresh_Token_Secret,
     Refresh_Token_Expired,
     GOOGLE_CLIENT_SECRET,
-    GOOGLE_CLIENT_ID
+    GOOGLE_CLIENT_ID,
+    Gmail_UserId,
+    Gmail_User_Password,
+    NODE_ENV,
+    URL,
+    Logo_Url
 } = config;
