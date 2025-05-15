@@ -3,6 +3,7 @@ import ApiError from "../../utils/apiError.js";
 import ApiResponse from "../../utils/apiResponse.js";
 import formModal from "../../models/form.model.js"
 import createFormSchema from "../../validators/form/createForm.js"
+import ValidationError from "../../utils/validationError.js"
 
 const createNewForm = AsyncHandler(async (req, res) => {
     const { title, description, authUser, publicUrl, proForm, branding, isDraft, fields } = req.body;
