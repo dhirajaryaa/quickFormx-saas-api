@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+// optional validators
+const optionSchema = z.object({
+        value: z.string().max(30, "option max 30 characters allow"),
+        checked: z.boolean().optional()
+    })
+
 export const fieldsSchema = z.object({
     label: z
         .string()
@@ -18,11 +24,7 @@ export const fieldsSchema = z.object({
     required: z.boolean().optional(),
     options: z.array(optionSchema).optional()
 });
-// optional validators
-const optionSchema = z.array({
-    value: z.string().max(30, "option max 30 characters allow"),
-    checked: z.boolean()
-})
+
 
 const createFormSchema = z.object({
     title: z

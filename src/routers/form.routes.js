@@ -1,10 +1,11 @@
 import { Router } from "express";
-import createNewForm from "../controllers/form/createForm.controller";
+import authorizedRoutes from "../middlewares/auth.middleware.js";
+import createNewForm from "../controllers/form/createForm.controller.js";
 
 const formRouter = Router();
 
 //? form routes
 //create
-formRouter.post("/",createNewForm);
+formRouter.post("/",authorizedRoutes,createNewForm);
 
 export default formRouter;
