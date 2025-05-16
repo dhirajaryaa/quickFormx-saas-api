@@ -3,15 +3,18 @@ import authorizedRoutes from "../middlewares/auth.middleware.js";
 import createNewForm from "../controllers/form/createForm.controller.js";
 import getForm from "../controllers/form/getForm.controller.js";
 import getAllForms from "../controllers/form/getForms.controller.js";
+import updateForm from "../controllers/form/updateForm.controller.js";
 
 const formRouter = Router();
 
 //? form routes
 //create
-formRouter.post("/",authorizedRoutes,createNewForm);
+formRouter.post("/", authorizedRoutes, createNewForm);
 //get form
-formRouter.get("/:formId",authorizedRoutes,getForm);
+formRouter.get("/:formId", authorizedRoutes, getForm);
 //get forms
-formRouter.get("/",authorizedRoutes,getAllForms);
+formRouter.get("/", authorizedRoutes, getAllForms);
+//update form
+formRouter.patch("/:formId", authorizedRoutes, updateForm);
 
 export default formRouter;
