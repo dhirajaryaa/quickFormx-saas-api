@@ -26,7 +26,7 @@ export const fieldsSchema = z.object({
 });
 
 
-const createFormSchema = z.object({
+const updateFormSchema = z.object({
     title: z
         .string()
         .min(6, "Title must be at least 6 characters long")
@@ -46,4 +46,4 @@ const createFormSchema = z.object({
     isDraft: z.boolean().optional(),
     branding: z.string().max(60, "custom branding only support under 60 characters").optional(),
 })
-export default createFormSchema;
+export default updateFormSchema;
