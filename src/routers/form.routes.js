@@ -4,6 +4,7 @@ import createNewForm from "../controllers/form/createForm.controller.js";
 import getForm from "../controllers/form/getForm.controller.js";
 import getAllForms from "../controllers/form/getForms.controller.js";
 import updateForm from "../controllers/form/updateForm.controller.js";
+import deleteForm from "../controllers/form/deleteForm.controller.js";
 
 const formRouter = Router();
 
@@ -16,5 +17,7 @@ formRouter.get("/:formId", authorizedRoutes, getForm);
 formRouter.get("/", authorizedRoutes, getAllForms);
 //update form
 formRouter.patch("/:formId", authorizedRoutes, updateForm);
+//update form
+formRouter.delete("/:formId", authorizedRoutes, deleteForm);
 
 export default formRouter;
