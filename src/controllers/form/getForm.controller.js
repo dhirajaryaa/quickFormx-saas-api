@@ -15,7 +15,8 @@ const getForm = AsyncHandler(async (req, res) => {
             // 1. Match using id and exclude drafts
             $match: {
                 _id: new mongoose.Types.ObjectId(formId),
-                isDraft: false
+                isDraft: false,
+                userId:  new mongoose.Types.ObjectId(req.user._id)
             }
         },
         {
