@@ -45,14 +45,14 @@ const saveFormDraft = AsyncHandler(async (req, res) => {
 
     // update form
     const updatedForm = await formModal.findByIdAndUpdate(formId, {
-        title: title || form.title,
-        description: description || form.description,
-        authUser: authUser || form.authUser,
-        publicUrl: publicUrl || form.publicUrl,
-        proForm: proForm || form.proForm,
-        branding: branding || form.branding,
-        isDraft: isDraft || form.isDraft,
-        fields: fields || form.fields,
+        title: title ?? form.title,
+        description: description ?? form.description,
+        authUser: authUser ?? form.authUser,
+        publicUrl: publicUrl ?? form.publicUrl,
+        proForm: proForm ?? form.proForm,
+        branding: branding ?? form.branding,
+        isDraft: isDraft ?? form.isDraft,
+        fields: fields ?? form.fields,
     }, { new: true });
 
     return res
