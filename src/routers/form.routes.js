@@ -24,6 +24,6 @@ formRouter.patch("/:formId", authorizedRoutes, updateForm);
 //delete form
 formRouter.delete("/:formId", authorizedRoutes, deleteForm);
 //draft form
-formRouter.patch("/:formId", authorizedRoutes, saveFormDraft);
+formRouter.patch("/:formId/draft", authorizedRoutes, saveFormDraft);
 
 export default formRouter;

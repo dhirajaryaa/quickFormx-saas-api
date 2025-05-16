@@ -22,7 +22,7 @@ const saveFormDraft = AsyncHandler(async (req, res) => {
     const form = await formModal.findById(formId);
     if (!form) {
         // create form
-        await formModal.create({
+        const newForm = await formModal.create({
             title,
             description,
             authUser,
