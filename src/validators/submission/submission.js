@@ -9,9 +9,7 @@ const submissionSchema = z.object({
     data: z.array(
         z.object({
             name: z.string(),
-            value: z.any().refine((val) => !isNaN(val) && val !== null && val !== undefined, {
-                message: "Value must be valid (not NaN, null, or undefined)",
-            })
+            value: z.any()
         })
     )
 });
