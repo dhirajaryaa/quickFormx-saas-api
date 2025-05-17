@@ -45,6 +45,9 @@ app.use("/api/v1/users", userRouter);
 //* form routes
 import formRouter from "./routers/form.routes.js";
 app.use("/api/v1/forms", formRouter);
+//* submission routes
+import submissionRouter from "./routers/submission.routes.js";
+app.use("/api/v1/submit", submissionRouter);
 
 // error middleware setup
 app.use(ErrorMiddleware);
