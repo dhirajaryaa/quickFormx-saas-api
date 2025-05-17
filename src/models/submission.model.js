@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
-
+const fieldSchema = new mongoose.Schema({
+    name: String,
+    value: String
+}, { _id: false });
 
 const submissionSchema = new mongoose.Schema({
     formId: {
@@ -12,18 +15,8 @@ const submissionSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "users"
     },
-    fieldData: [{
-        name: String,
-        value: String
-    }],
-    geoLocation: {
-        type: String,
-        default: null
-    },
-    device: {
-        type: String,
-        default: null
-    }
+    fieldData: [fieldSchema],
+    clientIp: String
 }, {
     timestamps: true
 });
