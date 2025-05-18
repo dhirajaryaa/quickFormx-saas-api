@@ -21,11 +21,18 @@
     },
     "homepage": "https://github.com/dhirajaryaa/quickFormx-saas-api#readme",
     "dependencies": {
+        "@google/genai": "^0.14.1",
+        "bcrypt": "^6.0.0",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
         "express": "^5.1.0",
         "express-rate-limit": "^7.5.0",
-        "mongoose": "^8.14.2"
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.14.2",
+        "nodemailer": "^7.0.3",
+        "passport": "^0.7.0",
+        "passport-google-oauth20": "^2.0.0",
+        "zod": "^3.24.4"
     },
     "devDependencies": {
         "dotenv": "^16.5.0",
