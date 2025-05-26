@@ -13,7 +13,6 @@ const getAllForms = AsyncHandler(async (req, res) => {
     const forms = await formModal.aggregate([
         { // 1. get all forms and remove draft forms
             $match: {
-                isDraft: false,
                 userId: new mongoose.Types.ObjectId(req.user._id)
             }
         },

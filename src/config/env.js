@@ -19,13 +19,14 @@ const config = Object.freeze({
     NODE_ENV: process.env.NODE_ENV,
     URL: process.env.URL,
     Logo_Url: process.env.Logo_Url,
-    GEMINI_API_KEY: process.env.GEMINI_API_KEY
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    OAUTH_REDIRECT_URL: process.env.OAUTH_REDIRECT_URL,
+    FRONTEND_URL: process.env.FRONTEND_URL
 });
 
 export const cookiesOptions = {
     http: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "None"
+    secure: process.env.NODE_ENV === "production"
 }
 
 export const {
@@ -43,5 +44,7 @@ export const {
     NODE_ENV,
     URL,
     Logo_Url,
-    GEMINI_API_KEY
+    GEMINI_API_KEY,
+    OAUTH_REDIRECT_URL,
+    FRONTEND_URL
 } = config;

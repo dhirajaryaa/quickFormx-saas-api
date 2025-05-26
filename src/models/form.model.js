@@ -9,7 +9,7 @@ const fieldSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file"],
+        enum: ["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file","password","url"],
         required: true
     },
     placeholder: { type: String },
