@@ -6,7 +6,7 @@ import createFormSchema from "../../validators/form/createForm.js"
 import ValidationError from "../../utils/validationError.js"
 
 const createNewForm = AsyncHandler(async (req, res) => {
-    const { title, description, authUser, publicUrl, proForm, branding, isDraft, fields } = req.body;
+    const { title, description, authUser, publicId, proForm, branding, isDraft, fields } = req.body;
     // user login
     if (!req.user) {
         throw new ApiError(401, "Unauthorized")
@@ -27,7 +27,7 @@ const createNewForm = AsyncHandler(async (req, res) => {
         title,
         description,
         authUser,
-        publicUrl,
+        publicId,
         proForm,
         branding,
         isDraft,

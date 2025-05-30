@@ -9,7 +9,7 @@ const fieldSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file","password","url"],
+        enum: ["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file", "password", "url"],
         required: true
     },
     placeholder: { type: String },
@@ -34,9 +34,10 @@ const formSchema = new Schema({
         type: Boolean,
         default: false
     },
-    publicUrl: {
+    publicId: {
         type: String,
-        default: ""
+        default: "",
+        index: true
     },
     proForm: {
         type: Boolean,
@@ -57,5 +58,5 @@ const formSchema = new Schema({
     }
 }, { timestamps: true });
 
- const formModal = mongoose.model("Form", formSchema);
- export default formModal;
+const formModal = mongoose.model("Form", formSchema);
+export default formModal;
