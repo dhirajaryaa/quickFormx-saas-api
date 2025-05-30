@@ -6,7 +6,6 @@ import formModal from "../../models/form.model.js"
 
 const getPublicForm = AsyncHandler(async (req, res) => {
     const { publicId } = req.params;
-    console.log(publicId);
 
     if (!publicId) {
         throw new ApiError(400, "publicId missing or invalid!")
