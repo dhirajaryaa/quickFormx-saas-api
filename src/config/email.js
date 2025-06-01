@@ -3,9 +3,9 @@ import {Gmail_UserId,Gmail_User_Password,NODE_ENV} from "./env.js"
 
 // create transport
 const emailTransport = nodemailer.createTransport({
- host: 'smtp.gmail.com',
-  port: 587,
-  secure: NODE_ENV === 'production',
+   host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // must be true for port 465
   auth:{
     user: Gmail_UserId,
     pass:Gmail_User_Password

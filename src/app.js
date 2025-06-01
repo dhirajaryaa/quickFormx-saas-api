@@ -10,6 +10,9 @@ import ErrorMiddleware from "./middlewares/error.middleware.js";
 // initialize express app
 const app = express();
 
+// Trust proxy (needed for express-rate-limit to work correctly behind proxies)
+app.set('trust proxy', true);
+
 // middlewares setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
