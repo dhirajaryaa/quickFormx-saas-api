@@ -11,7 +11,7 @@ import ErrorMiddleware from "./middlewares/error.middleware.js";
 const app = express();
 
 // Trust proxy (needed for express-rate-limit to work correctly behind proxies)
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 // middlewares setup
 app.use(express.urlencoded({ extended: true }));
@@ -28,13 +28,13 @@ app.use(cookieParser());
 app.use(express.static("./public"));
 // passport initialized
 app.use(passport.initialize());
-// rate limiter
+// ✅ Rate limiter middleware
 const limiter = rateLimit({
-    max: 50,
-    windowMs: 60 * 1000,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: "Too many requests from this IP, please try again in a minute"
+  max: 50, // limit each IP to 50 requests per windowMs
+  windowMs: 60 * 1000, // 1 minute
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: "Too many requests from this IP, please try again in a minute"
 });
 
 //! api routes
