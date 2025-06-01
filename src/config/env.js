@@ -25,8 +25,11 @@ const config = Object.freeze({
 });
 
 export const cookiesOptions = {
-    http: true,
-    secure: process.env.NODE_ENV === "production"
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none', // <-- explicitly set
+    path: '/',
+    maxAge: 7 * 24 * 60 * 60 * 1000 // optional: 7 days
 }
 
 export const {
