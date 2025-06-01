@@ -15,7 +15,7 @@ export const fieldsSchema = z.object({
         .string()
         .min(3, "Name must be at least 3 characters long"),
     type: z
-        .enum(["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file"]),
+        .enum(["text", "textarea", "email", "number", "radio", "checkbox", "select", "date", "file", "password", "url"]),
     placeholder: z
         .string()
         .min(3, "Placeholder must be at least 3 characters long")
@@ -34,8 +34,7 @@ const updateFormSchema = z.object({
         .optional(),
     description: z
         .string()
-        .min(6, "Description must be at least 6 characters long")
-        .max(300, "Description can't be more than 300 characters")
+        .max(500, "Description can't be more than 500 characters")
         .optional(),
     fields: z
         .array(fieldsSchema)
