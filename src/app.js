@@ -1,5 +1,6 @@
 import express from "express";
 import cors from 'cors';
+import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { ORIGIN } from "./config/env.js";
 import rateLimit from "express-rate-limit";
@@ -17,6 +18,9 @@ app.use(cors({
     origin: ORIGIN,
     credentials: true
 }));
+// halmet 
+app.use(helmet());
+// cookie parser 
 app.use(cookieParser());
 app.use(express.static("./public"));
 // passport initialized
