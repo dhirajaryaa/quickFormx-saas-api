@@ -19,8 +19,7 @@ const saveNewSubmission = AsyncHandler(async (req, res) => {
     if (!form) {
         throw new ApiError(404, "form not found!")
     };
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    // check form fields match
+const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;    // check form fields match
     const check = data.every(field => {
         return form?.fields.some(formField => formField.name === field.name)
     });
