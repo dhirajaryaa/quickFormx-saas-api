@@ -3,7 +3,7 @@ import ApiError from "../../utils/apiError.js";
 import ApiResponse from "../../utils/apiResponse.js";
 import userModel from "../../models/user.model.js"
 import { generateAccessAndRefreshToken } from "./login.controller.js";
-import { cookiesOptions,OAUTH_REDIRECT_URL } from "../../config/env.js";
+import { cookiesOptions, OAUTH_REDIRECT_URL } from "../../config/env.js";
 
 const loginWithGoogle = AsyncHandler(async (req, res) => {
     if (!req.user) {
@@ -34,8 +34,7 @@ const loginWithGoogle = AsyncHandler(async (req, res) => {
 
     // generate token
     const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user);
-    // remove sensitive data
-    const loginUser = await userModel.findById(user._id).select("-password -refreshToken -isVerified -googleId -verificationToken")
+    
     return res
         .cookie("accessToken", accessToken, cookiesOptions)
         .cookie("refreshToken", refreshToken, cookiesOptions)
